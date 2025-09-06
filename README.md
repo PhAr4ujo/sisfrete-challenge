@@ -51,6 +51,10 @@ Isso acontece por causa dos line endings (CRLF).
    docker compose up -d --build
    ```
 
+# Explicação Arquitetura Código
+
+Foi usado uma Clean Arch (Arquitetura Limpa) no código, usando camadas de Repository (Interação com dados do Eloquent e Models) e Services (Aplicação de regras de négocio), também foi usado Inversão e Injeção de depêndencia para escalabilidade e manutenibilidade da aplicação, além de ser uma excelente prática.
+
 # Explicação Sql
 
 Os desafios e a explicação de melhoria de performance estão no arquivo `sisfrete.sql`
