@@ -53,11 +53,11 @@ Isso acontece por causa dos line endings (CRLF).
 
 # Explicação Sql
 
-Os desafios e a explicação de melhoria de performance estão no arquivo sisfrete.sql
+Os desafios e a explicação de melhoria de performance estão no arquivo `sisfrete.sql`
 
 # Explicação Modelagem
 
-A modelagem está no arquivo diagram.sql
+A modelagem está no arquivo `diagram.png`
 
 ## Normalizações/Index
    1 - Tabelas Pivot foram usadas para normalizar as relações N para N de orders e products (Um produto pode estar em mais de um pedido e um pedido pode ter mais de um produto), e entre products e product_types, que segue a mesma lógica.
