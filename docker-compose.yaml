@@ -1,0 +1,41 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sisfrete_api
+    volumes:
+      - sisfrete_storage:/var/www/html/storage
+      - sisfrete_cache:/var/www/html/bootstrap/cache
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      - APACHE_RUN_USER=www-data
+      - APACHE_RUN_GROUP=www-data
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    container_name: sisfrete_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3308:3306"
+    networks:
+      - app-network
+
+volumes:
+  mysql_data:
+  sisfrete_storage:
+  sisfrete_cache:
+
+networks:
+  app-network:
+    driver: bridge
