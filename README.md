@@ -50,3 +50,17 @@ Isso acontece por causa dos line endings (CRLF).
    ```bash
    docker compose up -d --build
    ```
+
+
+
+# Explicação Modelagem
+
+## Normalizações/Index
+   1 - Tabelas Pivot foram usadas para normalizar as relações N para N de orders e products (Um produto pode estar em mais de um pedido e um pedido pode ter mais de um produto), e entre products e product_types, que segue a mesma lógica.
+   
+   2 - Customer_type foi criada para normalizar e tornar mais flexivem a manutenção de clientes juridicos(CNPJ) e físicos(CPF), e para o controle de documento de cada tipo de cliente também foi criado o campo 'national_identification', que é um index em customers, e já é normalizado.
+
+## Proof
+   1 - Nota-se que na tabela payments tem o campo proof, que ao invés de ser um BLOB(Binary Large Object) para guardar a imagem do comprovante, é um text, feito para guardar um PATH, dessa forma garantindo mais flexibilidade ao banco de dados que não precisará lhidar com um tipo tão pesado igual o BLOB, e também facilita a comunição com futuras integrações para o front-end.
+
+
